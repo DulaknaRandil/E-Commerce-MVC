@@ -1,0 +1,53 @@
+﻿@model WebApplication1.Models.tbl_user
+
+@{
+    Layout = null;
+}
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<div id="main-div" class="h-screen flex items-center justify-center bg-cover" style="background-image: url('../../Content/img/building2.jpg');">
+    <div id="box" class="w-full max-w-md bg-gray-200 bg-opacity-50 rounded-lg shadow-lg p-8">
+        @using (@Html.BeginForm())
+        {
+            <div class="text-center">
+                <h1 class="text-3xl font-bold text-red-600 mb-4">Log In as User</h1>
+            </div>
+
+            <div class="mb-4">
+                <div class="flex items-center border-b border-gray-300 py-2">
+                    <span class="mr-3"><i class="fas fa-user text-gray-500"></i></span>
+                    @Html.TextBoxFor(x => x.u_email, new { @class = "form-input w-full focus:outline-none focus:border-red-600", @placeholder = "Email" })
+                </div>
+                <span class="text-red-500">@Html.ValidationMessageFor(x => x.u_email)</span>
+            </div>
+
+            <div class="mb-4">
+                <div class="flex items-center border-b border-gray-300 py-2">
+                    <span class="mr-3"><i class="fas fa-lock text-gray-500"></i></span>
+                    @Html.PasswordFor(x => x.u_password, new { @class = "form-input w-full focus:outline-none focus:border-red-600", @placeholder = "Password" })
+                </div>
+                <span class="text-red-500">@Html.ValidationMessageFor(x => x.u_password)</span>
+            </div>
+
+            <div class="mb-4">
+                <input type="submit" value="Login" class="w-full bg-red-600 text-white font-bold py-2 px-4 rounded hover:bg-red-700 cursor-pointer">
+            </div>
+
+            <div class="mb-4">
+                <p class="text-red-500">@ViewBag.error</p>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
